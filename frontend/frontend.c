@@ -41,6 +41,30 @@
 #include "../retroarch.h"
 #endif
 
+/*
+	__PS4__ is defined in the Makefile
+	We can compile and run this poc under Linux, FreeBSD and the PS4
+	Linux is not explicitly checked (used as default)
+*/
+#ifdef __PS4__
+#include <kernel.h>
+
+FILE *__stdinp;
+FILE **__stdinp_addr;
+FILE *__stdoutp;
+FILE **__stdoutp_addr;
+FILE *__stderrp;
+FILE **__stderrp_addr;
+int __isthreaded;
+int *__isthreaded_addr;
+__typeof__(__mb_sb_limit) __mb_sb_limit;
+__typeof__(__mb_sb_limit) *__mb_sb_limit_address;
+__typeof__(_CurrentRuneLocale) _CurrentRuneLocale;
+__typeof__(_CurrentRuneLocale) *_CurrentRuneLocale_address;
+__typeof__(_DefaultRuneLocale) _DefaultRuneLocale;
+__typeof__(_DefaultRuneLocale) *_DefaultRuneLocale_address;
+#endif
+
 /**
  * main_exit:
  *
@@ -148,6 +172,23 @@ int rarch_main(int argc, char *argv[], void *data)
 #ifndef HAVE_MAIN
 int main(int argc, char *argv[])
 {
+   #ifdef __PS4__
+	int libc = sceKernelLoadStartModule("libSceLibcInternal.sprx", 0, NULL, 0, 0, 0);
+	sceKernelDlsym(libc, "__stdinp", (void **)&__stdinp_addr);
+	sceKernelDlsym(libc, "__stdoutp", (void **)&__stdoutp_addr);
+	sceKernelDlsym(libc, "__stderrp", (void **)&__stderrp_addr);
+	sceKernelDlsym(libc, "__isthreaded", (void **)&__isthreaded_addr);
+	__stdinp = *__stdinp_addr;
+	__stdoutp = *__stdoutp_addr;
+	__stderrp = *__stderrp_addr;
+	__isthreaded = *__isthreaded_addr;
+      sceKernelDlsym(libc, "__mb_sb_limit", (void **)&__mb_sb_limit_address);
+	__mb_sb_limit = *__mb_sb_limit_address;
+	sceKernelDlsym(libc, "_CurrentRuneLocale", (void **)&_CurrentRuneLocale_address);
+	_CurrentRuneLocale = *_CurrentRuneLocale_address;
+      sceKernelDlsym(libc, "_DefaultRuneLocale", (void **)&_DefaultRuneLocale_address);
+	_DefaultRuneLocale = *_DefaultRuneLocale_address;
+   #endif
    return rarch_main(argc, argv, NULL);
 }
 #endif

@@ -871,6 +871,8 @@ FRONTEND
 #endif
 #elif defined(PSP) || defined(VITA)
 #include "../frontend/drivers/platform_psp.c"
+#elif defined(ORBIS)
+#include "../frontend/drivers/platform_orbis.c"
 #elif defined(_3DS)
 #include "../frontend/drivers/platform_ctr.c"
 #elif defined(XENON)
