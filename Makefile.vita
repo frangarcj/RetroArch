@@ -153,7 +153,7 @@ ifeq ($(HAVE_VITAGLES), 1)
    VITA_LIBS += -llibScePiglet_stub -ltaihen_stub
    FSELF_FLAGS := -ss
 else
-   VITA_LIBS += -lvitaGL -lvitashark
+   VITA_LIBS += -lmathneon -lvitaGL -lvitaShaRK
    FSELF_FLAGS := -s
 endif
 
