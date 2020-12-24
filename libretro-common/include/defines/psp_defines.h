@@ -53,9 +53,9 @@ int sceClibPrintf ( const char * format, ... );
 
  // Memory left to the system for threads and other internal stuffs
 #ifdef SCE_LIBC_SIZE
-#define RAM_THRESHOLD 0x2000000 + SCE_LIBC_SIZE
+#define RAM_THRESHOLD 0x1000000 + SCE_LIBC_SIZE
 #else
-#define RAM_THRESHOLD 0x2000000
+#define RAM_THRESHOLD 0x1000000
 #endif
 
 #elif defined(PSP)
