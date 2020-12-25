@@ -281,7 +281,7 @@ static void *gl1_gfx_init(const video_info_t *video,
 #ifdef VITA
    if (!vgl_inited)
    {
-      vglInitExtended(0x1400000, full_x, full_y, RAM_THRESHOLD, SCE_GXM_MULTISAMPLE_4X);
+      vglInitExtended(0x140000, full_x, full_y, RAM_THRESHOLD, SCE_GXM_MULTISAMPLE_4X);
       vglUseVram(GL_TRUE);
       vgl_inited = true;
    }
