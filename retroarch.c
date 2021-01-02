@@ -15753,7 +15753,7 @@ void emscripten_mainloop(void)
 }
 #endif
 
-#ifdef HAVE_VITA2D
+#ifdef VITA
 #include <vitasdk.h>
 #endif
 
@@ -15763,7 +15763,7 @@ extern "C"
 #endif
 int main(int argc, char *argv[])
 {
-#ifdef HAVE_VITA2D
+#ifdef VITA
 	SceAppUtilAppEventParam eventParam;
 	memset(&eventParam, 0, sizeof(SceAppUtilAppEventParam));
 	sceAppUtilReceiveAppEvent(&eventParam);
