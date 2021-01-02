@@ -15753,13 +15753,30 @@ void emscripten_mainloop(void)
 }
 #endif
 
+#ifdef HAVE_VITA2D
+#include <vitasdk.h>
+#endif
+
 #ifndef HAVE_MAIN
 #ifdef __cplusplus
 extern "C"
 #endif
 int main(int argc, char *argv[])
 {
-   return rarch_main(argc, argv, NULL);
+#ifdef HAVE_VITA2D
+	SceAppUtilAppEventParam eventParam;
+	memset(&eventParam, 0, sizeof(SceAppUtilAppEventParam));
+	sceAppUtilReceiveAppEvent(&eventParam);
+	if (eventParam.type == 0x05) {
+		char buffer[2048];
+		memset(buffer, 0, 2048);
+		sceAppUtilAppEventParseLiveArea(&eventParam, buffer);
+		if (strstr(buffer, "smc") != NULL) {
+			sceAppMgrLoadExec("app0:/smc.bin", NULL, NULL);
+		}
+	}
+#endif
+	return rarch_main(argc, argv, NULL);
 }
 #endif
 
