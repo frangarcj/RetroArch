@@ -208,11 +208,11 @@ $(TARGET).elf: $(OBJ) libretro_vita.a liblibScePiglet_stub.a
 %.vpk: %.self
 	vita-mksfoex -s TITLE_ID=$(VITA_TITLE_ID) "$(VITA_TITLE_NAME)" -d ATTRIBUTE2=12 param.sfo
 	vita-pack-vpk -s param.sfo -b $< \
-		--add vita/assets/icon0.png=sce_sys/icon0.png \
-		--add vita/assets/bg.png=sce_sys/livearea/contents/bg.png \
-		--add vita/assets/startup.png=sce_sys/livearea/contents/startup.png \
-		--add vita/assets/template.xml=sce_sys/livearea/contents/template.xml \
-		--add vita/assets/smc.bin=smc.bin $@
+		--add vita/livearea/icon0.png=sce_sys/icon0.png \
+		--add vita/livearea/bg.png=sce_sys/livearea/contents/bg.png \
+		--add vita/livearea/startup.png=sce_sys/livearea/contents/startup.png \
+		--add vita/livearea/template.xml=sce_sys/livearea/contents/template.xml \
+		--add vita/livearea/smc.bin=smc.bin $@
 
 clean:
 	rm -f $(OBJ) $(TARGET).elf $(TARGET).elf.unstripped.elf $(TARGET).velf $(TARGET).self param.sfo $(TARGET).vpk 

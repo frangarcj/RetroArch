@@ -15764,6 +15764,7 @@ extern "C"
 int main(int argc, char *argv[])
 {
 #ifdef VITA
+	sceAppUtilInit(&(SceAppUtilInitParam){}, &(SceAppUtilBootParam){});
 	SceAppUtilAppEventParam eventParam;
 	memset(&eventParam, 0, sizeof(SceAppUtilAppEventParam));
 	sceAppUtilReceiveAppEvent(&eventParam);
