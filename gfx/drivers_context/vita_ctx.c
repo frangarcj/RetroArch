@@ -19,6 +19,8 @@
 #include "../../retroarch.h"
 #include "../common/vita_common.h"
 
+uint8_t do_swap = 1;
+
 static void vita_swap_interval(void *data, int interval)
 {
 #if defined(HAVE_VITAGLES)
@@ -67,7 +69,11 @@ static void vita_swap_buffers(void *data)
 #endif
 
 #if defined(HAVE_VITAGL)
-   vglSwapBuffers(GL_FALSE);
+   if (do_swap) {	
+      vglStopRendering();
+      vglStartRendering();
+   }
+   do_swap = 1;
 #endif
 }
 

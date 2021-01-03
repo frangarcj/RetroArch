@@ -59,6 +59,7 @@
 #ifdef VITA
 #include <defines/psp_defines.h>
 static bool vgl_inited = false;
+extern uint8_t do_swap;
 #endif
 
 static struct video_ortho gl1_default_ortho = {0, 1, 0, 1, -1, 1};
@@ -740,12 +741,14 @@ static bool gl1_gfx_frame(void *data, const void *frame,
 
    if (  !frame || frame == RETRO_HW_FRAME_BUFFER_VALID || (
          frame_width  == 4 &&
-         frame_height == 4 &&
-         (frame_width < width && frame_height < height))
+         frame_height == 4 /*&&
+         (frame_width < width && frame_height < height)*/)
       )
       draw = false;
    
-   do_swap = frame || draw;
+#ifdef VITA
+   do_swap = frame ? 1 : 0;
+#endif
 
    if (  gl1->video_width  != frame_width  ||
          gl1->video_height != frame_height ||
