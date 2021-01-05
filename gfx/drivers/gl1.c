@@ -869,12 +869,16 @@ static bool gl1_gfx_frame(void *data, const void *frame,
    if (gl1->menu_texture_enable) {
 #ifdef VITA
       do_swap = 1;
-      glViewport(0, 0, video_width, video_height);
       glDisable(GL_SCISSOR_TEST);
       glDisable(GL_DEPTH_TEST);
       glDisable(GL_STENCIL_TEST);
 #endif
       menu_driver_frame(menu_is_alive, video_info);
+#ifdef VITA
+      glEnable(GL_SCISSOR_TEST);
+      glEnable(GL_DEPTH_TEST);
+      glEnable(GL_STENCIL_TEST);
+#endif
    } else
 #endif
       if (video_info->statistics_show)
