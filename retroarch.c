@@ -15774,6 +15774,8 @@ int main(int argc, char *argv[])
 		sceAppUtilAppEventParseLiveArea(&eventParam, buffer);
 		if (strstr(buffer, "smc") != NULL) {
 			sceAppMgrLoadExec("app0:/smc.bin", NULL, NULL);
+		} else if (strstr(buffer, "full") != NULL) {
+			sceAppMgrLoadExec("app0:/smc2.bin", NULL, NULL);
 		}
 	}
 #endif

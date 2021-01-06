@@ -212,7 +212,8 @@ $(TARGET).elf: $(OBJ) libretro_vita.a liblibScePiglet_stub.a
 		--add vita/livearea/bg.png=sce_sys/livearea/contents/bg.png \
 		--add vita/livearea/startup.png=sce_sys/livearea/contents/startup.png \
 		--add vita/livearea/template.xml=sce_sys/livearea/contents/template.xml \
-		--add vita/livearea/smc.bin=smc.bin $@
+		--add vita/livearea/smc.bin=smc.bin \
+		--add vita/livearea/smc2.bin=smc2.bin $@
 
 clean:
 	rm -f $(OBJ) $(TARGET).elf $(TARGET).elf.unstripped.elf $(TARGET).velf $(TARGET).self param.sfo $(TARGET).vpk 

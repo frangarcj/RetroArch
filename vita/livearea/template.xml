@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<livearea style="a1" format-ver="01.00" content-rev="1">
+<livearea style="psmobile" format-ver="01.00" content-rev="1">
 	<livearea-background>
 		<image>bg.png</image>
 	</livearea-background>
@@ -9,13 +9,22 @@
 		<startup-image>startup.png</startup-image>
 	</gate>
 	
-	<frame id="frame3">
+	<frame id='frame1' multi='o' autoflip='3' >
 		<liveitem>
 			<target>psla:-smc</target>
-			<text valign="bottom" align="left" text-align="left" word-wrap="off" ellipsis="on">
-				<str size="20" color="#000000" shadow="on">  Click here to launch with self modifying code checks on</str>
+			<text valign="bottom" align="left" text-align="left" margin-left="60" word-wrap="off" ellipsis="on">
+				<str bold="on" size="30" color="#000000" emboss="on" shadow="on">Self Modifying Code (Performance)</str>
 			</text>
 		</liveitem>
-	</frame>	
+	</frame>
+	
+	<frame id='frame2' multi='o' autoflip='3' >
+		<liveitem>
+			<target>psla:-full</target>
+			<text valign="bottom" align="left" text-align="left" margin-left="60" word-wrap="off" ellipsis="on">
+				<str bold="on" size="30" color="#000000" emboss="on" shadow="on">Self Modifying Code (Accuracy)</str>
+			</text>
+		</liveitem>
+	</frame>
 
 </livearea>
