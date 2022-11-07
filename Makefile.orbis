@@ -126,7 +126,7 @@ DEFINES += -DRARCH_INTERNAL -DRARCH_CONSOLE -DHAVE_FILTERS_BUILTIN \
 					 -DHAVE_ONLINE_UPDATER -DHAVE_UPDATE_CORES -DHAVE_UPDATE_ASSETS \
 
 # Compiling with -Werror and disabling some warnings
-DEFINES += -Werror -Wno-macro-redefined -Wno-typedef-redefinition -Wno-non-literal-null-conversion -Wno-void-pointer-to-int-cast \
+DEFINES += -Wno-macro-redefined -Wno-typedef-redefinition -Wno-non-literal-null-conversion -Wno-void-pointer-to-int-cast \
 	-Wno-format -Wno-tautological-constant-out-of-range-compare -Wno-implicit-function-declaration
 
 ifeq ($(HAVE_KEYBOARD), 1)
